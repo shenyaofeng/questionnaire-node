@@ -1,6 +1,9 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const mockList = require('./mock/index');
+
+const cors = require("@koa/cors");
+
 const app = new Koa();
 const router = new Router();
 
@@ -22,6 +25,7 @@ mockList.forEach(item=>{
   })
 })
 
-
+app.use(cors());
 app.use(router.routes());
+
 app.listen(3000)
