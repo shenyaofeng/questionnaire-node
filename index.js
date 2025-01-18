@@ -19,8 +19,9 @@ async function getRes(fn) {
 // 注册mock路由
 mockList.forEach(item=>{
   const {url,method,response} = item;
-  router[item.method](url,async ctx=>{
-    const res = await getRes(response);
+  router[item.method](url, ctx=>{
+    // const res = await getRes(response);
+    const res = response();
     ctx.body = res; //输出
   })
 })
