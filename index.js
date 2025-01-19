@@ -21,7 +21,7 @@ mockList.forEach(item=>{
   const {url,method,response} = item;
   router[item.method](url, ctx=>{
     // const res = await getRes(response);
-    const res = response();
+    const res = response(ctx);
     ctx.body = res; //输出
   })
 })

@@ -3,14 +3,15 @@
 const Mock = require('mockjs')
 const Random = Mock.Random
 
-function getQuestionList(length = 10, isDeleted = false) {
+function getQuestionList(opt={}) {
+  const {isStar=false,isDeleted=false} = opt
   const list = []
-  for (let i = 1; i < length; i++) {
+  for (let i = 1; i < 11; i++) {
     list.push({
       _id: Random.id(),
       title: Random.ctitle(),
       isPublished: Random.boolean(),
-      isStar: Random.boolean(),
+      isStar,
       isDeleted,
       answerCount: Random.integer(100, 10000),
       createAt: Random.datetime(),
